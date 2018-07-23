@@ -15,7 +15,7 @@ const passportSetup = require("./passport/setup.js");
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/project3-backend', {useMongoClient: true})
+  .connect(process.env.MONGODB_URI, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -65,6 +65,12 @@ app.use(
 
   const authRouter = require("./routes/auth-router.js");
   app.use("/api", authRouter);
+
+// after your routes 
+app.use((req, res, next) => {
+  res.sendFile(`$(__dirname}/public/index.html`);
+});
+
 
 
 module.exports = app;
