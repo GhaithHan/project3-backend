@@ -68,7 +68,7 @@ app.use(
 
 // after your routes 
 app.use((req, res, next) => {
-  res.sendFile(`$(__dirname}/public/index.html`);
+  res.sendFile(`${__dirname}/public/index.html`);
 });
 
 

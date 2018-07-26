@@ -2,14 +2,18 @@ const express = require("express");
 
 const Resident = require("../models/resident-model.js");
 
+const Building = require("../models/building-model.js");
+
 const router = express.Router();
 
 
-router.get("/residents", (req, res, next) => {
-    Resident
-      .find()
-      .then((residentResults) => {
-          res.json(residentResults);
+router.get("/residents/:id", (req, res, next) => {
+    const id = req.params.id;
+    Building
+      .findById(id)
+      .populate("residents")
+      .then((buildingResults) => {
+          res.json(buildingResults.residents);
       })
       .catch((err) => {
           next(err);
@@ -17,11 +21,19 @@ router.get("/residents", (req, res, next) => {
  });
 
 router.post("/residents", (req, res, next) => {
-    const { firstName, lastName, email } = req.body;
+    const { firstName, lastName, email } = req.body.residentInfo;
+    const buildingId = req.body.buildingId;
+    console.log( buildingId );
 
     Resident.create({ firstName, lastName, email })
      .then((residentDoc) => {
-         res.json(residentDoc);
+         Building.findByIdAndUpdate(
+            buildingId, 
+            { $push: { residents: residentDoc._id }})
+         .then((buildingDoc) => {
+
+             res.json({residentDoc, buildingDoc} );
+         })
      })
      .catch((err) => {
          next(err);

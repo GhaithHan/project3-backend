@@ -15,7 +15,7 @@ router.get("/buildings", (req, res, next) => {
      });
 });
 
-router.get("building/:id", (req, res, next) => {
+router.get("/building/:id", (req, res, next) => {
     const { id } = req.params;
 
   Building.findById(id)
@@ -31,7 +31,7 @@ router.get("building/:id", (req, res, next) => {
     });
 });
 
-router.put("building/:id", (req, res, next) => {
+router.put("/building/:id", (req, res, next) => {
     const { id } = req.params;
     const { adress, promoter, dateOfoperation, budgetDisposed, dueDate } = req.body; 
 

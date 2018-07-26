@@ -5,14 +5,14 @@ const Schema = mongoose.Schema;
 const suggestionSchema = new Schema({
     description: { type: String, required: true },
     category: { type: String, required: true },
-    complainant: [{
+    complainant: {
         type: Schema.Types.ObjectId,
         ref: "Resident",
-    }],
-    NumberOfAppartement: [{
+    },
+    NumberOfAppartement: {
         type: Schema.Types.ObjectId,
         ref: "Appartement",
-    }],
+    },
     isDone: { type: Boolean }
     }, {
     timestamps: true
