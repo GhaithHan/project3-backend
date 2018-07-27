@@ -62,9 +62,13 @@ app.use(
 
   const suggestionRouter = require("./routes/suggestion-router.js");
   app.use("/api", suggestionRouter);
+  
+  const payementRouter = require("./routes/payement-router.js");
+  app.use("/api", payementRouter);
 
   const authRouter = require("./routes/auth-router.js");
   app.use("/api", authRouter);
+
 
 // after your routes 
 app.use((req, res, next) => {

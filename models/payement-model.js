@@ -8,6 +8,7 @@ const payementSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Resident",
     },
+    situation: { type: String, required: true },
     }, {
     timestamps: true
 });
