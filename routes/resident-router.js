@@ -58,10 +58,14 @@ router.put("/resident/:id", (req, res, next) => {
 })
 
 router.delete("/resident/:id", (req, res, next) => {
-    const { id } = req.params;
+    const id = req.params.id;
+    console.log( 'id------------------' );    
+    console.log( id );
   
-    Resident.findByIdAndRemove(id)
+    Resident.findOneAndRemove({_id :id})
       .then((residentDoc) => {
+        console.log( 'residentDoc--------------------' );          
+        console.log( residentDoc );
         res.json(residentDoc);
       })
       .catch((err) => {
