@@ -1,8 +1,7 @@
 const express = require("express");
-
 const Building = require("../models/building-model.js");
-
 const router = express.Router();
+
 
 router.get("/buildings", (req, res, next) => {
    Building

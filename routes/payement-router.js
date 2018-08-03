@@ -1,7 +1,5 @@
 const express = require("express");
-
 const Payement = require("../models/payement-model.js");
-
 const Building = require("../models/building-model.js");
 
 const router = express.Router();
@@ -40,22 +38,7 @@ router.post("/payements", (req, res, next) => {
      });
 });
 
-// router.put("/suggestion/:id", (req, res, next) => {
-//     const { id } = req.params;
-//     const { firstName, lastName, email } = req.body; 
 
-//     Resident.findByIdAndUpdate(
-//         id,
-//         { $set: { firstName, lastName, email } },
-//         { runValidators: true, new: true }
-//     )
-//     .then((residentDoc) => {
-//         res.json(residentDoc);
-//     })
-//     .catch((err) => {
-//         next(err);
-//     });
-// })
 
 router.delete("/payement/:id", (req, res, next) => {
     const { id } = req.params;

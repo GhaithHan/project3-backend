@@ -1,7 +1,5 @@
 const express = require("express");
-
 const Resident = require("../models/resident-model.js");
-
 const Building = require("../models/building-model.js");
 
 const router = express.Router();
